@@ -1,4 +1,4 @@
 { pkgs }: with pkgs; [
   nodePackages.typescript-language-server
-  lazygit
+  nodePackages.typescript
 ]
