@@ -4,4 +4,5 @@ with pkgs.vimPlugins; [
   vim-airline-themes
   telescope-nvim
   nvim-lspconfig
+  copilot-vim
 ]
