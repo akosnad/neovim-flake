@@ -9,6 +9,8 @@ with pkgs.vimPlugins; rec {
     nvim-snippy
     cmp-snippy
     vim-snippets
+
+    crates-nvim
   ];
 
   minimal = [

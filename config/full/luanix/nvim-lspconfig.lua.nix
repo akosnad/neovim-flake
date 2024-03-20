@@ -23,4 +23,8 @@ require('neodev').setup({
 nvim_lsp.lua_ls.setup({
     capabilities = capabilities,
 })
+
+nvim_lsp.rust_analyzer.setup({
+    capabilities = capabilities,
+})
 ''

@@ -5,6 +5,7 @@
     nodePackages.pyright
 
     lua-language-server
+    rust-analyzer
   ];
 
   minimal = [
