@@ -1,0 +1,7 @@
+{
+  full = {
+    inherits = [ "minimal" ];
+  };
+
+  minimal = {};
+}

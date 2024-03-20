@@ -1,5 +1,10 @@
-{ pkgs, variant ? builtins.filter (f: f != "default.nix") (builtins.attrNames (builtins.readDir ./.)) }:
 let
+  variants = import ./variants.nix;
+in
+{ pkgs, variant }:
+let
+  variantDeps = variants.${variant}.inherits or [];
+
   nixFiles2ConfigFiles = dir:
     builtins.map (file:
       pkgs.writeTextFile {
@@ -25,11 +30,14 @@ let
       (if pkgs.lib.hasSuffix "lua" file then "luafile" else "source")
       + " ${file}") files);
 
-  vim = scripts2ConfigFiles "${variant}/vim";
-  vimnix = nixFiles2ConfigFiles "${variant}/vimnix";
-  lua = scripts2ConfigFiles "${variant}/lua";
-  luanix = nixFiles2ConfigFiles "${variant}/luanix";
+  variantActionWrapper = action:
+    builtins.map (base: action base) (variantDeps ++ [variant]);
 
 in builtins.concatStringsSep "\n"
-  (builtins.map (configs: sourceConfigFiles configs)
-    [ vim vimnix lua luanix ])
+  (builtins.map (configs: sourceConfigFiles configs) (
+    variantActionWrapper (base: scripts2ConfigFiles "${base}/vim") ++
+    variantActionWrapper (base: nixFiles2ConfigFiles "${base}/vimnix") ++
+    variantActionWrapper (base: scripts2ConfigFiles "${base}/lua") ++
+    variantActionWrapper (base: nixFiles2ConfigFiles "${base}/luanix")
+    )
+  )
