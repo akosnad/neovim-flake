@@ -19,6 +19,9 @@
       neovim = import ./packages/neovim.nix {
         pkgs = final;
       };
+      neovim-minimal = import ./packages/neovim-minimal.nix {
+        pkgs = final;
+      };
     };
 
     pkgs = import nixpkgs {
@@ -30,6 +33,12 @@
     apps.x86_64-linux.default = {
       type = "app";
       program = "${pkgs.neovim}/bin/nvim";
+    };
+
+    packages.x86_64-linux.minimal = pkgs.neovim-minimal;
+    apps.x86_64-linux.minimal = {
+      type = "app";
+      program = "${pkgs.neovim-minimal}/bin/nvim";
     };
   };
 }

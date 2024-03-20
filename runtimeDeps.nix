@@ -1,6 +1,10 @@
-{ pkgs }: with pkgs; [
-  nodePackages.typescript-language-server
-  nodePackages.typescript
+{ pkgs }: with pkgs; rec {
+  full = minimal ++ [
+    nodePackages.typescript-language-server
+    nodePackages.typescript
+  ];
 
-  ranger
-]
+  minimal = [
+    ranger
+  ];
+}

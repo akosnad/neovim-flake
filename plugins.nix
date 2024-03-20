@@ -1,11 +1,17 @@
 { pkgs }:
-with pkgs.vimPlugins; [
-  vim-airline
-  vim-airline-themes
-  telescope-nvim
-  nvim-lspconfig
-  copilot-vim
-  ranger-vim
-  nvim-cmp
-  cmp-nvim-lsp
-]
+with pkgs.vimPlugins; rec {
+  full = minimal ++ [
+    nvim-lspconfig
+    nvim-cmp
+    cmp-nvim-lsp
+  ];
+
+  minimal = [
+    vim-airline
+    vim-airline-themes
+    telescope-nvim
+    ranger-vim
+    copilot-vim
+  ];
+
+}

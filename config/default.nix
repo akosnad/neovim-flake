@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, variant ? builtins.filter (f: f != "default.nix") (builtins.attrNames (builtins.readDir ./.)) }:
 let
   nixFiles2ConfigFiles = dir:
     builtins.map (file:
@@ -25,10 +25,10 @@ let
       (if pkgs.lib.hasSuffix "lua" file then "luafile" else "source")
       + " ${file}") files);
 
-  vim = scripts2ConfigFiles "vim";
-  vimnix = nixFiles2ConfigFiles "vimnix";
-  lua = scripts2ConfigFiles "lua";
-  luanix = nixFiles2ConfigFiles "luanix";
+  vim = scripts2ConfigFiles "${variant}/vim";
+  vimnix = nixFiles2ConfigFiles "${variant}/vimnix";
+  lua = scripts2ConfigFiles "${variant}/lua";
+  luanix = nixFiles2ConfigFiles "${variant}/luanix";
 
 in builtins.concatStringsSep "\n"
   (builtins.map (configs: sourceConfigFiles configs)
