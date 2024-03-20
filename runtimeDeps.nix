@@ -3,6 +3,8 @@
     nodePackages.typescript-language-server
     nodePackages.typescript
     nodePackages.pyright
+
+    lua-language-server
   ];
 
   minimal = [

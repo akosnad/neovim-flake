@@ -4,6 +4,11 @@ with pkgs.vimPlugins; rec {
     nvim-lspconfig
     nvim-cmp
     cmp-nvim-lsp
+    neodev-nvim
+
+    nvim-snippy
+    cmp-snippy
+    vim-snippets
   ];
 
   minimal = [
