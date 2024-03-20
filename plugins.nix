@@ -6,4 +6,6 @@ with pkgs.vimPlugins; [
   nvim-lspconfig
   copilot-vim
   ranger-vim
+  nvim-cmp
+  cmp-nvim-lsp
 ]
