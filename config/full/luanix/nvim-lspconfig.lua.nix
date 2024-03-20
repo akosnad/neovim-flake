@@ -15,5 +15,6 @@ nvim_lsp.tsserver.setup({
 local pyright = require('lspconfig')
 nvim_lsp.pyright.setup({
   capabilities = capabilities,
+  cmd = {"${pkgs.nodePackages.pyright}/bin/pyright-langserver", "--stdio"},
 })
 ''
