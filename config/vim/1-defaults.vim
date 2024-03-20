@@ -13,5 +13,6 @@ let base16colorspace=256
 set termguicolors
 set noshowmode
 set listchars=tab:→\ ,nbsp:+,space:·
+set timeoutlen=250
 
 hi! link @variable Normal

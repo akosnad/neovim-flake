@@ -5,4 +5,5 @@ with pkgs.vimPlugins; [
   telescope-nvim
   nvim-lspconfig
   copilot-vim
+  ranger-vim
 ]
