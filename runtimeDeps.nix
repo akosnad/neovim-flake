@@ -3,6 +3,7 @@
     nodePackages.typescript-language-server
     nodePackages.typescript
     nodePackages.pyright
+    nodePackages.prettier
 
     lua-language-server
     rust-analyzer

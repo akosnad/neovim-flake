@@ -10,6 +10,8 @@ with pkgs.vimPlugins; rec {
     cmp-snippy
     vim-snippets
 
+    vim-prettier
+
     crates-nvim
   ];
 
