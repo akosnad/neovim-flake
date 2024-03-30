@@ -10,5 +10,6 @@
 
   minimal = [
     ranger
+    ripgrep
   ];
 }
